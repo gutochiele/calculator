@@ -1,0 +1,12 @@
+body,
+.calculator,
+.numPad,
+.operators {
+    display: flex;
+}
+
+.calcDisplay {
+    height: 25px;
+    width: 200px;
+    border: 1px solid black;
+}
