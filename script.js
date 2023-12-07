@@ -16,6 +16,7 @@ function operate(a, b, o) {
     else if(o === '/') {return result = divide(a, b)}
     else if(o === '*') {return result = multiply(a, b)}
     else if(o === '%') {return result = percent(a, b)}
+    else if(o === '=') {return result}
 }
 
 function clearFunc(){
@@ -24,10 +25,11 @@ function clearFunc(){
 }
 
 
-const equalsBtn = document.querySelector('.equals');
+const equalsBtn = document.getElementById('equals');
 const clearBtn = document.getElementById('clear');
-const calculatorDisplay = document.querySelector(".calcDisplay")
-const numberBtn = document.querySelectorAll('.numbers')
+const calculatorDisplay = document.querySelector(".calcDisplay");
+const numberBtn = document.querySelectorAll('.numbers');
+const operatorBtn = document.querySelectorAll('.operator');
 let calculatorInput = '0'
 
 clearBtn.addEventListener('click', () => {
@@ -42,16 +44,23 @@ number.addEventListener('click', () => {
 })
 })
 
-const operatorBtn = document.querySelectorAll('.operator');
 let firstTerm = '';
+let secondTerm ='';
+
 operatorBtn.forEach(oprBtn => { 
 oprBtn.addEventListener('click', () => {
     firstTerm = calculatorInput,
-    a = firstTerm,
+    a = Number(firstTerm),
     o = oprBtn.value,
-    calculatorDisplay.innerText = ''
+    calculatorDisplay.innerText = `${a} ${o}`
     calculatorInput = ''
-    console.log(a)
-    console.log(o)
 })
+})
+
+equalsBtn.addEventListener('click', () => {
+    secondTerm = calculatorInput,
+    b = Number(secondTerm),
+    operate(a, b, o),
+    calculatorDisplay.innerText = result,
+    calculatorInput = result
 })
