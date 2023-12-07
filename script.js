@@ -19,26 +19,39 @@ function operate(a, b, o) {
 }
 
 function clearFunc(){
-    return calculatorInput = null, 
-    calculatorDisplay.innerText = ''
+    return calculatorInput = '', 
+    calculatorDisplay.innerText = '0'
 }
 
-const operatorBtn = document.querySelectorAll('.operator');
+
 const equalsBtn = document.querySelector('.equals');
 const clearBtn = document.getElementById('clear');
 const calculatorDisplay = document.querySelector(".calcDisplay")
 const numberBtn = document.querySelectorAll('.numbers')
-let calculatorInput = ''
+let calculatorInput = '0'
 
 clearBtn.addEventListener('click', () => {
     clearFunc()
 })
 
-numberBtn.forEach(number => { 
+numberBtn.forEach(number => {
+    calculatorInput = '' 
 number.addEventListener('click', () => {
     calculatorInput += number.textContent
     calculatorDisplay.innerText = calculatorInput
-    return a = calculatorInput; // ????
 })
 })
 
+const operatorBtn = document.querySelectorAll('.operator');
+let firstTerm = '';
+operatorBtn.forEach(oprBtn => { 
+oprBtn.addEventListener('click', () => {
+    firstTerm = calculatorInput,
+    a = firstTerm,
+    o = oprBtn.value,
+    calculatorDisplay.innerText = ''
+    calculatorInput = ''
+    console.log(a)
+    console.log(o)
+})
+})
