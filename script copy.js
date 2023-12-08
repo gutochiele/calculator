@@ -32,7 +32,6 @@ const clearBtn = document.getElementById('clear');
 const calculatorDisplay = document.querySelector('.calcDisplay');
 const numberBtn = document.querySelectorAll('.numbers');
 const operatorBtn = document.querySelectorAll('.operator');
-const invertBtn = document.getElementById('inverter')
 let calculatorInput = '';
 
 clearBtn.addEventListener('click', () => {
@@ -41,11 +40,6 @@ clearBtn.addEventListener('click', () => {
     b = '';
     result = '';
 });
-
-invertBtn.addEventListener('click', () => {
-    calculatorInput = -calculatorInput
-    calculatorDisplay.innerText = calculatorInput
-})
 
 numberBtn.forEach(number => {
     number.addEventListener('click', () => {
@@ -62,7 +56,6 @@ operatorBtn.forEach(oprBtn => {
             operate(a, b, o);
             calculatorDisplay.innerText = result;
             calculatorInput = result.toString();
-            result = a;
         }
 
         // Set up for the next operation
@@ -70,7 +63,7 @@ operatorBtn.forEach(oprBtn => {
         a = Number(firstTerm);
         o = oprBtn.value;
         calculatorDisplay.innerText = `${a}${o}`;
-        reset(); // Clear the input for the new number entry    
+        reset(); // Clear the input for the new number entry
     });
 });
 
@@ -79,6 +72,9 @@ equalsBtn.addEventListener('click', () => {
         // If no second term, set it
         b = Number(calculatorInput);
     }
+
     operate(a, b, o);
     calculatorDisplay.innerText = result;
+    calculatorInput = result.toString();
+    reset(); // Clear the input for the new number entry
 });

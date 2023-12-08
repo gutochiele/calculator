@@ -1,13 +1,57 @@
-body,
-.calculator,
-.numPad,
-.operators {
+body{   
+    display: flex;
+    height: auto;
+    width: auto;
+    justify-content: center;
+    padding: 100px;
+    /* background-color: dark; */
+}
+
+.calculator{
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+
+}
+
+.calcDisplay{
+    border: 3px solid black;
+    font-size: 32px;
+}
+
+.keyboard{
+    border: 1px solid black; 
     display: flex;
 }
 
-.calcDisplay {
-    height: 60px;
-    width: 300px;
-    border: 1px solid black;
-    font-size: 50px;
+.numPad{
+    border: 1px solid black; 
+    max-width: 150px;
+    max-height: 200px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+}
+
+.operators{
+    border: 1px solid black; 
+    max-width: 100px;
+    max-height: 200px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+button{
+    width: 50px;
+    height: 50px;
+    font-size: 32px;
+}
+
+#equals{
+    width: 100px;
+}
+
+#inverter{
+    font-size: 24px;
 }
