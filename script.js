@@ -5,22 +5,27 @@ let result = '';
 
 const add = (a, b) => a + b;
 const subt = (a, b) => a - b;
-const divide = (a, b) => a / b;
 const multiply = (a, b) => a * b;
 const percent = (a, b) => a * (b / 100);
+const divide = (a, b) => b !== 0 ? a / b : 0;
 
 function operate(a, b, o) {
-    if (o === '+') return result = add(a, b);
-    else if (o === '-') return result = subt(a, b);
-    else if (o === '/') return result = divide(a, b);
-    else if (o === '*') return result = multiply(a, b);
-    else if (o === '%') return result = percent(a, b);
-    else if (o === '=') return result;
+    if (o === '+') result = add(a, b);
+    else if (o === '-') result = subt(a, b);
+    else if (o === '/') result = divide(a, b);
+    else if (o === '*') result = multiply(a, b);
+    else if (o === '%') result = percent(a, b);
+    else if (o === '=') result;
+    else return 'Error';
+    return result;
 }
 
 function clearFunc() {
     calculatorInput = '';
     calculatorDisplay.innerText = '0';
+    a = '';
+    b = '';
+    result = '';
 }
 
 function reset() {
@@ -37,14 +42,14 @@ let calculatorInput = '';
 
 clearBtn.addEventListener('click', () => {
     clearFunc();
-    a = '';
-    b = '';
-    result = '';
+
 });
 
 invertBtn.addEventListener('click', () => {
-    calculatorInput = -calculatorInput
-    calculatorDisplay.innerText = calculatorInput
+    calculatorDisplay.innerText = -result
+    result = -result
+    a = result
+
 })
 
 numberBtn.forEach(number => {
@@ -57,28 +62,30 @@ numberBtn.forEach(number => {
 operatorBtn.forEach(oprBtn => {
     oprBtn.addEventListener('click', () => {
         if (b !== '') {
-            // If the second term exists, perform the operation
             b = Number(calculatorInput);
             operate(a, b, o);
             calculatorDisplay.innerText = result;
             calculatorInput = result.toString();
-            result = a;
+        } else if(b === ''){
+        b = parseFloat(calculatorInput);
         }
-
-        // Set up for the next operation
-        firstTerm = calculatorInput;
-        a = Number(firstTerm);
+        a = Number(calculatorInput);
         o = oprBtn.value;
-        calculatorDisplay.innerText = `${a}${o}`;
-        reset(); // Clear the input for the new number entry    
+        calculatorDisplay.innerText = `${a}   ${o}`;
+        reset();
     });
 });
 
 equalsBtn.addEventListener('click', () => {
-    if (b === '') {
-        // If no second term, set it
+    if (b !== '') {
+        b = Number(calculatorInput);
+        operate(a, b, o);
+        calculatorDisplay.innerText = result;
+        calculatorInput = result.toString();
+    } else {
         b = Number(calculatorInput);
     }
-    operate(a, b, o);
+    a = Number(calculatorInput);
     calculatorDisplay.innerText = result;
+    reset();
 });

@@ -11,12 +11,17 @@ body{
     display: flex;
     flex-direction: column;
     flex-shrink: 0;
+    border: 5px solid black;
 
 }
 
 .calcDisplay{
     border: 3px solid black;
+    border-bottom: 0px;
     font-size: 32px;
+    padding-left: 8px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    min-height: 45px;
 }
 
 .keyboard{
