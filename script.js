@@ -87,5 +87,5 @@ equalsBtn.addEventListener('click', () => {
     }
     a = Number(calculatorInput);
     calculatorDisplay.innerText = result;
-    reset();
+ //   reset();
 });
