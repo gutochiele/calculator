@@ -18,7 +18,7 @@ function operate(a, b, o) {
     else if (o === '=') result;
     else return 'Error';
     return result;
-}
+};
 
 function clearFunc() {
     calculatorInput = '';
@@ -44,9 +44,7 @@ clearBtn.addEventListener('click', () => {
 invertBtn.addEventListener('click', () => {
     calculatorInput = -calculatorInput;
     calculatorDisplay.innerText = calculatorInput;
-})
-
-
+});
 
 numberBtn.forEach(number => {
     number.addEventListener('click', () => {
