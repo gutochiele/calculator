@@ -34,7 +34,8 @@ const clearBtn = document.getElementById('clear');
 const calculatorDisplay = document.querySelector('.calcDisplay');
 const numberBtn = document.querySelectorAll('.numbers');
 const operatorBtn = document.querySelectorAll('.operator');
-const invertBtn = document.getElementById('inverter')
+const invertBtn = document.getElementById('inverter');
+const commaBtn = document.getElelementById('comma');
 let calculatorInput = '';
 
 clearBtn.addEventListener('click', () => {
@@ -51,6 +52,10 @@ numberBtn.forEach(number => {
         calculatorInput += number.textContent;
         calculatorDisplay.innerText = calculatorInput;
     });
+    //LOOK HERE-----------------------------
+    if(parseFloat(calculatorDisplay)){
+        commaBtn.disabled = true;
+    }
 });
 
 operatorBtn.forEach(oprBtn => {
