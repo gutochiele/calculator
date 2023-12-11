@@ -42,17 +42,14 @@ clearBtn.addEventListener('click', () => {
 });
 
 invertBtn.addEventListener('click', () => {
-    if(result === ''){
-    calculatorDisplay.innerText = -a;
-    a = -a;
-    calculatorInput = a;
-    } else{    
+    result = calculatorInput
     calculatorDisplay.innerText = -result;
     result = -result;
     a = result;
     calculatorInput = result;
-    }
+    
 })
+
 
 numberBtn.forEach(number => {
     number.addEventListener('click', () => {
