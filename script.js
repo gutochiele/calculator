@@ -7,7 +7,7 @@ const add = (a, b) => a + b;
 const subt = (a, b) => a - b;
 const multiply = (a, b) => a * b;
 const percent = (a, b) => a * (b / 100);
-const divide = (a, b) => b !== 0 ? a / b : 0;
+const divide = (a, b) => b !== 0 ? a / b : 'ERROR!';
 
 function operate(a, b, o) {
     if (o === '+') result = add(a, b);
