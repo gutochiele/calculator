@@ -15,17 +15,17 @@ function operate(a, b, o) {
     else if (o === '/') result = divide(a, b);
     else if (o === '*') result = multiply(a, b);
     else if (o === '%') result = percent(a, b);
-    else if (o === '=') result;
     else return 'Error';
+    result = parseFloat(result.toFixed(9));
     return result;
-};
+};  
 
 function clearFunc() {
-    calculatorInput = '';
-    calculatorDisplay.innerText = '0';
-    a = '';
-    b = '';
-    o = '';
+    calculatorInput = '',
+    calculatorDisplay.innerText = '0',
+    a = '',
+    b = '',
+    o = '',
     result = '';
 }
 
@@ -35,7 +35,7 @@ const calculatorDisplay = document.querySelector('.calcDisplay');
 const numberBtn = document.querySelectorAll('.numbers');
 const operatorBtn = document.querySelectorAll('.operator');
 const invertBtn = document.getElementById('inverter');
-const commaBtn = document.getElelementById('comma');
+const commaBtn = document.getElementById('comma');
 let calculatorInput = '';
 
 clearBtn.addEventListener('click', () => {
@@ -49,14 +49,20 @@ invertBtn.addEventListener('click', () => {
 
 numberBtn.forEach(number => {
     number.addEventListener('click', () => {
-        calculatorInput += number.textContent;
-        calculatorDisplay.innerText = calculatorInput;
+        // Convert calculatorInput to a string
+        calculatorInput = String(calculatorInput);
+        // Check if the current input already contains a comma
+        const containsComma = calculatorInput.includes('.');
+        // If the current input doesn't contain a comma, append the clicked number
+        if (!containsComma || number.textContent !== '.') {
+            calculatorInput += number.textContent;
+            calculatorDisplay.innerText = parseFloat(calculatorInput);
+        }
+        // Disable the comma button if the input already contains a comma
+        commaBtn.disabled = containsComma;
     });
-    //LOOK HERE-----------------------------
-    if(parseFloat(calculatorDisplay)){
-        commaBtn.disabled = true;
-    }
 });
+
 
 operatorBtn.forEach(oprBtn => {
     oprBtn.addEventListener('click', () => {

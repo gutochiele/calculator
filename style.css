@@ -38,13 +38,22 @@ body{
     flex-direction: row-reverse;
 }
 
-.operators{
+.operators{ 
     border: 1px solid black; 
     max-width: 100px;
     max-height: 200px;
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
+}
+
+.operators button{
+    background-color: #7a0000;
+    color: antiquewhite;
+}
+
+#clear{
+    background-color: rgb(98, 98, 98);
 }
 
 button{
