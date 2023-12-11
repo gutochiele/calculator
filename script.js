@@ -25,11 +25,8 @@ function clearFunc() {
     calculatorDisplay.innerText = '0';
     a = '';
     b = '';
+    o = '';
     result = '';
-}
-
-function reset() {
-    calculatorInput = '';
 }
 
 const equalsBtn = document.getElementById('equals');
@@ -42,14 +39,19 @@ let calculatorInput = '';
 
 clearBtn.addEventListener('click', () => {
     clearFunc();
-
 });
 
 invertBtn.addEventListener('click', () => {
-    calculatorDisplay.innerText = -result
-    result = -result
-    a = result
-
+    if(result === ''){
+    calculatorDisplay.innerText = -a;
+    a = -a;
+    calculatorInput = a;
+    } else{    
+    calculatorDisplay.innerText = -result;
+    result = -result;
+    a = result;
+    calculatorInput = result;
+    }
 })
 
 numberBtn.forEach(number => {
@@ -65,14 +67,14 @@ operatorBtn.forEach(oprBtn => {
             b = Number(calculatorInput);
             operate(a, b, o);
             calculatorDisplay.innerText = result;
-            calculatorInput = result.toString();
+            calculatorInput = result;
         } else if(b === ''){
-        b = parseFloat(calculatorInput);
+        b = Number(calculatorInput);
         }
         a = Number(calculatorInput);
         o = oprBtn.value;
         calculatorDisplay.innerText = `${a}   ${o}`;
-        reset();
+        calculatorInput = '';
     });
 });
 
@@ -81,11 +83,10 @@ equalsBtn.addEventListener('click', () => {
         b = Number(calculatorInput);
         operate(a, b, o);
         calculatorDisplay.innerText = result;
-        calculatorInput = result.toString();
-    } else {
+        calculatorInput = result;
+        b = ''
+    } else if(b === ''){
         b = Number(calculatorInput);
     }
     a = Number(calculatorInput);
-    calculatorDisplay.innerText = result;
-    reset();
 });
