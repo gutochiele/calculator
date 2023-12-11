@@ -62,6 +62,7 @@ numberBtn.forEach(number => {
 operatorBtn.forEach(oprBtn => {
     oprBtn.addEventListener('click', () => {
         if (b !== '') {
+            b = Number(calculatorInput);
             operate(a, b, o);
             calculatorDisplay.innerText = result;
             calculatorInput = result.toString();
@@ -77,11 +78,14 @@ operatorBtn.forEach(oprBtn => {
 
 equalsBtn.addEventListener('click', () => {
     if (b !== '') {
+        b = Number(calculatorInput);
         operate(a, b, o);
         calculatorDisplay.innerText = result;
         calculatorInput = result.toString();
     } else {
-        a = Number(calculatorInput);
+        b = Number(calculatorInput);
     }
+    a = Number(calculatorInput);
     calculatorDisplay.innerText = result;
+ //   reset();
 });
